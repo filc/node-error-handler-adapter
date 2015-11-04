@@ -16,9 +16,10 @@
     "url": "https://github.com/filc/node-error-handler-adapter/issues"
   },
   "homepage": "https://github.com/filc/node-error-handler-adapter#readme",
-  "dependencies": {},
-  "devDependencies": {
-    "mocha": "^2.3.3",
+  "dependencies": {
     "node-hexconnector": "^0.1.2"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3"
   }
 }
