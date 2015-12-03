@@ -16,7 +16,10 @@ module.exports = {
 
     getHandler: (fn) => {
         return (error) => {
-            getLogger().log('error', 'ERROR: ' + error, error.stack);
+
+            if (error instanceof Error) {
+                getLogger().log('error', 'ERROR: ' + error, error.stack);
+            }
 
             if (typeof fn === 'function') {
                 fn(error);
