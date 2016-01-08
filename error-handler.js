@@ -23,7 +23,9 @@ module.exports = {
                         return additionalHandlers[key]['handler'](error);
                     }
                 }
-            } else if (error instanceof Error) {
+            }
+
+            if (error instanceof Error) {
                 getLogger().log('error', 'ERROR: ' + error, error.stack);
             }
 
