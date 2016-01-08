@@ -14,10 +14,16 @@ module.exports = {
         connector = _connector;
     },
 
-    getHandler: (fn) => {
+    getHandler: (fn, additionalHandlers) => {
         return (error) => {
 
-            if (error instanceof Error) {
+            if (additionalHandlers) {
+                for (const key in additionalHandlers) {
+                    if (error instanceof additionalHandlers[key]['class']) {
+                        return additionalHandlers[key]['handler'](error);
+                    }
+                }
+            } else if (error instanceof Error) {
                 getLogger().log('error', 'ERROR: ' + error, error.stack);
             }
 

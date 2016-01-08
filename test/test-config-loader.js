@@ -32,5 +32,27 @@ describe('Error Handler module', () => {
 
         handler('asd');
     });
+
+    it('should return with a handler and call custom error class function', (done) => {
+        connector.adapters.logger.setHandler(() => {});
+
+        function TestError() {}
+        TestError.prototype = Object.create(Error.prototype);
+        TestError.prototype.constructor = TestError;
+
+        let handlerMap = [
+            {
+                'class': TestError,
+                'handler': (error) => {
+                    assert.equal(error instanceof TestError, true);
+                    assert.equal(error instanceof Error, true);
+                    done();
+                }
+            }
+        ];
+
+        const handler = connector.adapters.errorHandler.getHandler(null, handlerMap);
+        handler(new TestError());
+    });
   });
 });
