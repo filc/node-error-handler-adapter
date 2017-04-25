@@ -1,6 +1,6 @@
 {
   "name": "error-handler-adapter",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Error handler",
   "main": "error-handler.js",
   "scripts": {
