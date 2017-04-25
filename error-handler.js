@@ -3,7 +3,7 @@ var logger;
 
 function getLogger() {
     if (!logger) {
-        logger = connector.adapters.logger;
+        logger = connector.getAdapter('logger');
     }
 
     return logger;
